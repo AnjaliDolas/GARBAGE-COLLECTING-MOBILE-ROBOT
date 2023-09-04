@@ -1,0 +1,54 @@
+#define BLYNK_PRINT Serial
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+#include <ESP32Servo.h>
+
+char auth[] = "cUQuqytnYb-seNUw9h4Ety89ks2fJoaW";
+char ssid[] = "Connecting...";
+char pass[] = "pranita111";
+
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+Servo servo5;
+Servo servo6;
+
+BLYNK_WRITE(V1) {
+ servo1.write(param.asInt());
+}
+BLYNK_WRITE(V2) 
+{
+ servo2.write(param.asInt());
+}
+BLYNK_WRITE(V3) 
+{
+ servo3.write(param.asInt());
+}
+BLYNK_WRITE(V4) 
+{
+ servo4.write(param.asInt());
+}
+BLYNK_WRITE(V5) 
+{
+ servo5.write(param.asInt());
+}
+BLYNK_WRITE(V6) {
+ servo6.write(param.asInt());
+}
+void setup() 
+{
+ // Debug console Serial.begin(115200);
+ Blynk.begin(auth, ssid, pass);
+ servo1.attach(13);
+ servo2.attach(12);
+ servo3.attach(14);
+ servo4.attach(27);
+ servo5.attach(26);
+ servo6.attach(25);
+}
+void loop()
+{
+Blynk.run(); // You can inject your own code or combine it with other sketches.
+}
